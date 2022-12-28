@@ -2,14 +2,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Prototype 2</title>
+    <title>360&deg; Image Gallery</title>
+
     <meta name="description" content="360&deg; Image Gallery - A-Frame" />
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@5/dist/aframe-event-set-component.min.js"></script>
     <script src="https://unpkg.com/aframe-layout-component@5.3.0/dist/aframe-layout-component.min.js"></script>
     <script src="https://unpkg.com/aframe-template-component@3.2.1/dist/aframe-template-component.min.js"></script>
     <script src="https://unpkg.com/aframe-proxy-event-component@2.1.0/dist/aframe-proxy-event-component.min.js"></script>
-
+    <link rel="stylesheet" href="./css/style.css" />
     <!-- Image link template to be reused. -->
     <script id="link" type="text/html">
       <a-entity
@@ -69,12 +70,13 @@
     </script>
   </head>
   <body>
-    <a-scene>
+
+    <a-scene class="">
       <a-assets>
-        <img id="point1" src="./img/img1.jpg" />
-        <img id="point2" src="./img/img2.jpg" />
-        <img id="point3" src="./img/img3.jpg" />
-        <img id="point4" src="/img/img4.jpg" />
+        <img id="point1" src="./img/street_view/1_clg.jpg"/>
+        <img id="point2" src="./img/street_view/2_clg.jpg" />
+        <img id="point3" src="./img/street_view/3_clg.jpg" />
+        <img id="point4" src="./img/street_view/4_clg.jpg" />
 
         <img
           id="hotspot"
@@ -86,7 +88,7 @@
         <a-entity id="group-point1">
           <a-image
             spot="linkto:#point2;spotgroup:group-point2"
-            position="5 1 -3"
+            position="-20 1 -3"
           ></a-image>
         </a-entity>
         <a-entity id="group-point2" scale="0 0 0">
@@ -124,7 +126,15 @@
         animation__fadeback="property: components.material.material.color; type: color; from: #000; to: #FFF; dur: 300; startEvents: animationcomplete__fade"
       ></a-sky>
       <a-entity laser-controls="hand: right"></a-entity>
+      <!-- Camera + cursor. -->
       <a-entity id="cam" camera position="0 1.6 0" look-controls>
+        <!-- <a-entity
+            cursor="fuse:true;fuseTimeout:2000"
+            geometry="primitive:ring;radiusInner:0.01;radiusOuter:0.02"
+            position="0 0 -1.8"
+            material="shader:flat;color:#ff0000"
+            animation__mouseenter="property:scale;to:3 3 3;startEvents:mouseenter;endEvents:mouseleave;dir:reverse;dur:2000;loop:1"
+          ></a-entity> -->
         <a-cursor
           id="cursor"
           fuse="true"
